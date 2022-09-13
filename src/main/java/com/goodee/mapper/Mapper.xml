@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goodee.dao.DAO">
+
+	<select id="selectlist1" resultType="VO">
+		select * from bbs
+	</select>
+	
+	<select id="selectlist2" resultType="VO">
+		select * from bbs limit 15
+	</select>
+	
+	<select id="selectlist3" parameterType="int" resultType="VO">
+		select * from bbs
+		<if test="page != 0">
+		limit 15*#{page}-15, 15*#{page}
+		</if> 
+	</select>
+	
+</mapper>
