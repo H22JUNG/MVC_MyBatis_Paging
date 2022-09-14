@@ -5,6 +5,9 @@
 
 <mapper namespace="com.goodee.dao.DAO">
 
+	<select id="count" resultType="int">
+		select count(*) from bbs
+	</select>
 	<select id="selectlist1" resultType="VO">
 		select * from bbs
 	</select>
@@ -13,11 +16,8 @@
 		select * from bbs limit 15
 	</select>
 	
-	<select id="selectlist3" parameterType="int" resultType="VO">
-		select * from bbs
-		<if test="page != 0">
-		limit 15*#{page}-15, 15*#{page}
-		</if> 
+	<select id="selectlist3" parameterType="pageVO" resultType="VO">
+		select * from bbs limit #{start}, 15
 	</select>
 	
 </mapper>
