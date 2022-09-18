@@ -76,17 +76,29 @@ p {
 	</table>
 	
 	<fieldset>
-		<% int totalpage = (Integer)request.getAttribute("page");
-			int nowpage = (Integer)request.getAttribute("nowpage");
-			
-			for(int i=1; i < nowpage; i++) { %>
-			<a href="${pageContext.request.contextPath}/Controller5?page=<%=i%>"><%=i%></a>
-			<%}%>
-			 <p><%=nowpage %></p> 
-			 <%for(int i=nowpage+1; i <= totalpage; i++) {%>
-			 <a href="${pageContext.request.contextPath}/Controller5?page=<%=i%>"><%=i%></a>
-			<%
-		}%>
+		<!-- 첫페이지 일때는 prev 비활성화 -->
+		<c:choose>
+			<c:when test="${1==page.nowPage}"><span>◀</span></c:when>
+			<c:otherwise>
+				<a href="${pageContext.request.contextPath}/Controller6?page=${page.nowPage-1}">◀</a>
+			</c:otherwise>
+		</c:choose>
+		<c:forEach var="i" begin="${page.startPage}" end="${page.endPage}">
+			<c:choose>
+				<c:when test="${page.nowPage eq i}">
+					<span>${i}</span>
+				</c:when>
+				<c:otherwise>
+					<a href="${pageContext.request.contextPath}/Controller6?page=${i}">${i}</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		<c:choose>
+			<c:when test="${page.totalPage == page.nowPage}"><span>▶</span></c:when>
+			<c:otherwise>
+				<a href="${pageContext.request.contextPath}/Controller6?page=${page.nowPage+1}">▶</a>
+			</c:otherwise>
+		</c:choose>
 	</fieldset>
 	
 </body>

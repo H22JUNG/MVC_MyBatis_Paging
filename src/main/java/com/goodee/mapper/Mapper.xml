@@ -20,4 +20,10 @@
 		select * from bbs limit #{start}, 15
 	</select>
 	
+	<select id="selectBBSList" resultType="VO">
+		select id, category, title, owner, content,
+		date_format(create_date, "%Y-%m-%d %T") create_date
+		from bbs
+		limit #{start}, #{cntPerPage}
+	</select>
 </mapper>
