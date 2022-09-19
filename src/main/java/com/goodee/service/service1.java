@@ -168,6 +168,32 @@ public class service1 {
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
+		request.setAttribute("page", page);
+		
+		BBSInputPageVO vo = new BBSInputPageVO();
+		//vo.setNowPage(page);
+		vo.setStart((15*page)-15);
+		
+		//mapper에 넣어주는 용도
+		vo.setCntPerPage(15);
+		
+		int totalpage = dao.count()/15;
+		totalpage = (dao.count()%15==0) ? totalpage : totalpage+1;
+		vo.setTotalPage(totalpage);
+		
+		vo.setCntPerBlock(10);
+		vo.setStartPage((page/10)*10+1);
+		vo.setEndPage(vo.getStartPage()+9);
+		
+		vo.setNowBlock(page/10+1);
+		vo.setStartBlock(1);
+		int endblock = totalpage/vo.getCntPerBlock();
+		endblock = (totalpage/vo.getCntPerBlock()==0) ? endblock : endblock+1;
+		vo.setEndBlock(endblock);
+	
+		request.setAttribute("list", dao.selectBBSList(vo));
+		request.setAttribute("vo", vo);
+		
 		
 		
 	}

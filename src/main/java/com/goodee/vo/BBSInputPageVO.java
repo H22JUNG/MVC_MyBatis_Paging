@@ -20,7 +20,7 @@ public class BBSInputPageVO {
 	private int total;
 	
 	
-	//블럭당 row 개수 (화살표 안쪽 페이지 수)
+	//블럭당 row 개수 (15)
 	private int cntPerPage;
 	
 	//마지막 페이지
