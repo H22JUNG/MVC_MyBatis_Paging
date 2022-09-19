@@ -33,6 +33,5 @@
 <h2>여덟번째 bbs</h2>
 <a href="${pageContext.request.contextPath}/Controller8">이동</a>
 
-<!-- push가 왜 안돼 -->
 </body>
 </html>

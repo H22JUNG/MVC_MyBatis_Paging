@@ -126,7 +126,7 @@ public class service1 {
 		inputVO.setCntPerPage(15);
 		//페이지 옮겼을 때 시작하는 row번호
 		inputVO.setStart((page-1)*inputVO.getCntPerPage());
-		//S페이지 옮겼을 때 끝나는 row번호
+		//페이지 옮겼을 때 끝나는 row번호
 		inputVO.setEnd(page*inputVO.getCntPerPage());
 		
 		//블록당 페이지
@@ -138,11 +138,12 @@ public class service1 {
 		
 		inputVO.setTotalPage(totalpage);
 		
-		//블록 당 첫 페이지 설정(1~10=0, 11~20=10)
-		int initPage = (inputVO.getNowPage()-1/inputVO.getCntPerBlock()*inputVO.getCntPerBlock());
+		//블록 당 페이지 설정(1~10=0, 11~20=10)
+		int initPage = (inputVO.getNowPage()-1)/inputVO.getCntPerBlock()*inputVO.getCntPerBlock();
 		//현재 페이지가 3페이지라고 했을 때, index가 0부터 시작해서 -1빼주기
-		//2/10일 때 몫이 0이니까 첫페이지
-		//현재 페이지가 15페이지라고 했을 때, 14/10은 1 => 두번째 페이지
+		//2/10일 때 몫이 0이니까 0*10 = 0, 첫페이지
+		//현재 페이지가 15페이지라고 했을 때, 14/10은 1
+		//1*10= 10> 두번째 페이지
 		
 		//initPage는 0부터 시작하니까 1로 시작하는 시작 페이지 만들기
 		int startPage=initPage+1;
@@ -162,5 +163,12 @@ public class service1 {
 		request.setAttribute("page", inputVO);
 		
 	}
-
+	public void listService7(HttpServletRequest request) {
+		int page = 1;
+		if(request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		
+		
+	}
 }
