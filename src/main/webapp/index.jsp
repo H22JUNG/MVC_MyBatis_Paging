@@ -28,10 +28,10 @@
 <a href="${pageContext.request.contextPath}/Controller6?page=1">이동</a>
 <hr />
 <h2>일곱번째 bbs</h2>
-<a href="${pageContext.request.contextPath}/Controller7">이동</a>
+<a href="${pageContext.request.contextPath}/Controller7?page=1">이동</a>
 <hr />
 <h2>여덟번째 bbs</h2>
-<a href="${pageContext.request.contextPath}/Controller8">이동</a>
+<a href="${pageContext.request.contextPath}/Controller8?page=1">이동</a>
 
 </body>
 </html>

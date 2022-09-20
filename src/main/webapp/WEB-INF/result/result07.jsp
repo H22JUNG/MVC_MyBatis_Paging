@@ -77,16 +77,52 @@ p {
 		</main>
 	</div>
 	<fieldset>
-		<% int nowpage = (Integer)request.getAttribute("page"); %>
-		<a href="${pageContext.request.contextPath}/Controller7?page=<%=nowpage%>"><<</a>
+		<% int nowpage = (Integer)request.getAttribute("page"); 
+		BBSInputPageVO vo = (BBSInputPageVO)request.getAttribute("vo"); %>
+		
+		<% if(vo.getStartPage()==1) {%>
+			<a><<</a>
+		<% } else { %>
+		<a href="${pageContext.request.contextPath}/Controller7?page=<%=vo.getStartPage()-10%>"><<</a>
+		<%} %>
+		
+		<% if(nowpage==1) {%>
+			<a>◀</a>
+		<% } else { %>
 		<a href="${pageContext.request.contextPath}/Controller7?page=<%=nowpage-1%>">◀</a>
+		<%} %>
 		
 		<c:forEach var="i" begin="${vo.startPage}" end="${vo.endPage}">
-			<a href="${pageContext.request.contextPath}/Controller7?page=${i}">${i}</a>
+			<c:choose>
+				<c:when test="${i==page}"><span>${i}</span></c:when>
+				<c:otherwise>
+					<a href="${pageContext.request.contextPath}/Controller7?page=${i}">${i}</a>
+				</c:otherwise>
+			</c:choose>
 		</c:forEach>
 		
-		<a href="${pageContext.request.contextPath}/Controller7?page=<%=nowpage+1%>">▶</a>
-		<a href="${pageContext.request.contextPath}/Controller7?page=${vo.nowBlock+1}">>></a>
+		
+		<c:choose>
+			<c:when test="${page>=vo.totalPage}"><a>▶</a></c:when>
+			<c:otherwise>
+				<a href="${pageContext.request.contextPath}/Controller7?page=${page+1}">▶</a>
+			</c:otherwise>
+		</c:choose>
+		<%-- <% if(nowpage>=vo.getTotalPage()) {%>
+			<a>▶</a> 
+		<% } else { %>
+			<a href="${pageContext.request.contextPath}/Controller7?page=<%=nowpage+1%>">▶</a>
+		<%} %>
+		 --%>
+		<% if(vo.getStartPage()+9>=vo.getTotalPage()) {%>
+			<a>>></a>
+		<% } else { %>
+		<a href="${pageContext.request.contextPath}/Controller7?page=<%=vo.getStartPage()+10%>">>></a>
+		<%} %>
+		
+
+		
+		
 	</fieldset>
 </body>
 </html>

@@ -19,24 +19,23 @@ public class BBSInputPageVO {
 	//총 row 개수
 	private int total;
 	
-	
 	//블럭당 row 개수 (15)
 	private int cntPerPage;
 	
 	//마지막 페이지
-	private int lastPage;
+	//private int lastPage;
 	
 	//처음 row
 	private int start;
 	
 	//끝 row
-	private int end;
+	//private int end;
 	
 	//처음 블록
-	private int startBlock;
+	//private int startBlock;
 	
 	//마지막 블록 
-	private int endBlock;
+	//private int endBlock;
 	
 	//현재 블록
 	private int nowBlock;
@@ -92,44 +91,12 @@ public class BBSInputPageVO {
 		this.cntPerPage = cntPerPage;
 	}
 
-	public int getLastPage() {
-		return lastPage;
-	}
-
-	public void setLastPage(int lastPage) {
-		this.lastPage = lastPage;
-	}
-
 	public int getStart() {
 		return start;
 	}
 
 	public void setStart(int start) {
 		this.start = start;
-	}
-
-	public int getEnd() {
-		return end;
-	}
-
-	public void setEnd(int end) {
-		this.end = end;
-	}
-
-	public int getStartBlock() {
-		return startBlock;
-	}
-
-	public void setStartBlock(int startBlock) {
-		this.startBlock = startBlock;
-	}
-
-	public int getEndBlock() {
-		return endBlock;
-	}
-
-	public void setEndBlock(int endBlock) {
-		this.endBlock = endBlock;
 	}
 
 	public int getNowBlock() {
