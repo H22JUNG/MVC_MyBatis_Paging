@@ -192,6 +192,7 @@ public class service1 {
 			vo.setNowBlock((page / 10) + 1);
 		}
 
+		//필요없음
 		// vo.setStartBlock(1);
 		// int endblock = totalpage/vo.getCntPerBlock();
 		// endblock = (totalpage%vo.getCntPerBlock()==0) ? endblock : endblock+1;
